@@ -1,0 +1,348 @@
+
+# Copyright (c) 2009, Tom Adams
+# 
+# Permission to use, copy, modify, and/or distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+# REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+# AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+# INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+# LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+# OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+# PERFORMANCE OF THIS SOFTWARE.
+
+
+# GKOS configuration file for joy2chord
+# http://joy2chord.sourceforge.net/
+# http://gkos.com/
+
+# I decided to make some modifications:
+# - keys are limited to those in the ASCII character set
+# - each chord corresponds to a keyboard key (except the mode changes)
+# - CapsLock was not included because it is evil
+
+jsdev = 0
+total_simple_buttons = 0
+total_chorded_buttons = 6
+
+# A D 1 8
+# B E 2 16
+# C F 4 32
+
+# These are set-up for my Trust "Predator" USB gamepad
+chord_b1 = 3
+chord_b2 = 4
+chord_b3 = 5
+chord_b4 = 0
+chord_b5 = 1
+chord_b6 = 2
+
+total_modes = 2
+total_macros = 0 # macros are a NOOP, apparently
+total_modifiers = 3
+
+1modifier = KEY_LEFTCTRL
+2modifier = KEY_LEFTALT
+3modifier = KEY_LEFTSHIFT
+
+# Switch modes
+1modecode = 63 # ABC
+2modecode = 63 # 123
+# Note: this doesn't work with the vanilla joy2chord, clone my tree:
+#       http://github.com/holizz/joy2chord
+
+# Switch modes until a key is pressed
+#2modemodifier = 45 # SYMB
+# Note: this functionality doesn't exist (yet)
+
+# === ABC-123
+
+# Note: my keyboard is mapped to Dvorak, thus we have to map GKOS as if it were
+#       QWERTY being converted to Dvorak. This is a bug in X.Org or something.
+
+# A D
+# B E
+# C F
+1chord1 = KEY_A # A
+1chord2 = KEY_N # B
+1chord4 = KEY_I # C
+1chord8 = KEY_H # D
+1chord16 = KEY_D # E
+1chord32 = KEY_Y # F
+# 1 4 ! $
+# 2 5 @ %
+# 3 6 # ^
+2chord1 = KEY_1
+2chord2 = KEY_2
+2chord4 = KEY_3
+2chord8 = KEY_4
+2chord16 = KEY_5
+2chord32 = KEY_6
+
+# H G
+# I G
+# J
+1chord24 = KEY_U # G
+1chord25 = KEY_J # H
+1chord26 = KEY_G # I
+1chord28 = KEY_C # J
+# 7 0 & )
+# 8 0 * )
+# 9   (
+2chord24 = KEY_0
+2chord25 = KEY_7
+2chord26 = KEY_8
+2chord28 = KEY_9
+
+# L
+# M K
+# N K
+1chord48 = KEY_V # K
+1chord49 = KEY_P # L
+1chord50 = KEY_M # M
+1chord52 = KEY_L # N
+# 1/2
+# & #
+# @ #
+2chord48 = KEY_RESERVED
+2chord49 = KEY_RESERVED
+2chord50 = KEY_RESERVED
+2chord52 = KEY_RESERVED
+
+# O P
+# O Q
+#   R
+1chord3 = KEY_S # O
+1chord11 = KEY_R # P
+1chord19 = KEY_X # Q
+1chord35 = KEY_O # R
+# + %
+# + =
+#   JPY
+2chord3 = KEY_RESERVED
+2chord11 = KEY_RESERVED
+2chord19 = KEY_RESERVED
+2chord35 = KEY_RESERVED
+
+#   T
+# S U
+# S V
+1chord6 = KEY_SEMICOLON # S
+1chord14 = KEY_K # T
+1chord22 = KEY_F # U
+1chord38 = KEY_DOT # V
+#   $
+# * EUR
+# * GBP
+2chord6 = KEY_RESERVED
+2chord14 = KEY_RESERVED
+2chord22 = KEY_RESERVED
+2chord38 = KEY_RESERVED
+
+# X W
+# Y
+# Z W
+1chord40 = KEY_COMMA # W
+1chord41 = KEY_B # X
+1chord42 = KEY_T # Y
+1chord44 = KEY_SLASH # Z
+# [ (
+# <
+# { (
+2chord40 = KEY_RESERVED
+2chord41 = KEY_MINUS # LEFTBRACE
+2chord42 = KEY_RESERVED
+2chord44 = KEY_RESERVED
+
+# U" Ao
+#    A"
+# U" O"
+1chord5 = KEY_RESERVED
+1chord13 = KEY_RESERVED
+1chord21 = KEY_RESERVED
+1chord37 = KEY_RESERVED
+# ) ]
+#   >
+# ) }
+2chord5 = KEY_RESERVED
+2chord13 = KEY_EQUAL # RIGHTBRACE
+2chord21 = KEY_RESERVED
+2chord37 = KEY_RESERVED
+
+# === OTHER SYMBOLS
+
+# X
+#   X - _
+#
+1chord17 = KEY_APOSTROPHE # MINUS
+2chord17 = KEY_APOSTROPHE # MINUS
+
+# X
+# X X \ |
+#   X
+1chord51 = KEY_BACKSLASH
+2chord51 = KEY_BACKSLASH
+
+# X
+#   X
+# X X
+1chord53 = KEY_RESERVED
+2chord53 = KEY_RESERVED
+
+# X X
+#   X
+# X
+1chord29 = KEY_RESERVED
+2chord29 = KEY_RESERVED
+
+#
+#   X , <
+# X
+1chord20 = KEY_W # COMMA
+2chord20 = KEY_W # COMMA
+
+#   X
+#     ; :
+# X
+1chord12 = KEY_Z # SEMICOLON
+2chord12 = KEY_Z # SEMICOLON
+
+#   X
+# X X / ?
+# X
+1chord30 = KEY_LEFTBRACE # SLASH
+2chord30 = KEY_LEFTBRACE # SLASH
+
+#   X
+# X   ' "
+#
+1chord10 = KEY_Q # APOSTROPHE
+2chord10 = KEY_Q # APOSTROPHE
+
+# X X
+# X   Ins
+#   X
+#(defined elsewhere)
+
+#   X
+# X   ` ~
+# X X
+1chord46 = KEY_GRAVE
+2chord46 = KEY_GRAVE
+
+# X
+#     = +
+#   X
+1chord33 = KEY_RIGHTBRACE # EQUAL
+2chord33 = KEY_RIGHTBRACE # EQUAL
+
+#
+# X   . >
+#   X
+1chord34 = KEY_E # DOT
+2chord34 = KEY_E # DOT
+
+# === DIRECTIONS
+
+# ^H <
+# ^H
+# ^H ^
+1chord7 = KEY_BACKSPACE
+2chord7 = KEY_BACKSPACE
+1chord15 = KEY_LEFT
+2chord15 = KEY_LEFT
+1chord23 = KEY_RESERVED
+2chord23 = KEY_RESERVED
+1chord39 = KEY_HOME
+2chord39 = KEY_HOME
+
+# > _
+#   _
+# G _
+1chord56 = KEY_SPACE
+2chord56 = KEY_SPACE
+1chord57 = KEY_RIGHT
+2chord57 = KEY_RIGHT
+1chord58 = KEY_RESERVED
+2chord58 = KEY_RESERVED
+1chord60 = KEY_END
+2chord60 = KEY_END
+
+# ^ ^
+#
+#
+1chord9 = KEY_UP
+2chord9 = KEY_UP
+
+#
+#
+# v v
+1chord36 = KEY_DOWN
+2chord36 = KEY_DOWN
+
+# ^ ^
+# ^ ^ PgUp
+#
+1chord27 = KEY_PAGEUP
+2chord27 = KEY_PAGEUP
+
+#
+# v v PgDn
+# v v
+1chord54 = KEY_PAGEDOWN
+2chord54 = KEY_PAGEDOWN
+
+# === SHIFT SYMB ABC-123
+
+1chord18 = KEY_LEFTSHIFT # SHIFT
+2chord18 = KEY_LEFTSHIFT # SHIFT
+1chord45 = KEY_RESERVED # SYMB
+2chord45 = KEY_RESERVED # SYMB
+1chord63 = KEY_RESERVED # ABC-123
+2chord63 = KEY_RESERVED # ABC-123
+
+# === CONTROL CODES
+
+# X X
+# X X Esc
+# X
+1chord31 = KEY_ESC
+2chord31 = KEY_ESC
+
+# X X
+# X   Ctrl
+# X X
+1chord47 = KEY_LEFTCTRL
+2chord47 = KEY_LEFTCTRL
+
+# X
+# X X Alt
+# X X
+1chord55 = KEY_LEFTALT
+2chord55 = KEY_LEFTALT
+
+#   X
+# X X Delete
+# X X
+1chord62 = KEY_DELETE
+2chord62 = KEY_DELETE
+
+# X X
+# X   Insert
+#   X
+1chord43 = KEY_INSERT
+2chord43 = KEY_INSERT
+
+# X X
+#   X Tab
+# X X
+1chord61 = KEY_TAB
+2chord61 = KEY_TAB
+
+# X X
+# X X Enter
+#   X
+1chord59 = KEY_ENTER
+2chord59 = KEY_ENTER
